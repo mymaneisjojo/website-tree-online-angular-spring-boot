@@ -1,0 +1,54 @@
+<h3 class="text-center">Produc Detail</h3>
+<div class="container">
+    <table class="table">
+
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{product.id}}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{product.name}}</td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td>{{product.quantity}}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{product.description}}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{product.cat.name}}</td>
+            </tr>
+            
+            <tr>
+                <th>image</th>
+                <td><img [src]="this.host + product.image" width="150px" height="150px" alt=""></td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{product.price}}</td>
+            </tr>
+
+            <tr>
+                <th>Price</th>
+                <td>{{product.sale_price}}</td>
+            </tr>
+           
+            <tr>
+                <th>Status</th>
+                <td>{{product.status==1?'Hiện':'Ẩn'}}</td>
+            </tr>
+
+            <tr>
+                <th>Price</th>
+                <td>{{product.created_at | date: 'longDate'}}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <a class="btn btn-success" [routerLink]="['/admin/product-list']">Back to Index</a>
+</div>

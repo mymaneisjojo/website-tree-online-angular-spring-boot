@@ -1,0 +1,347 @@
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/site/images/breadcrumb/bg/1-1-1919x388.jpg" style="background-image: url(&quot;assets/site/images/breadcrumb/bg/1-1-1919x388.jpg&quot;)">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading">Shop</h2>
+                        <ul>
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>Shop List Left Sidebar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <li *ngFor="let item of cartPro">
+        <div class="item product-cart-item row">
+            <div class="col-md-8" *ngIf="item">{{item.name}}</div>
+            <div class="col-md-4" *ngIf="item"><strong>${{item.price}}</strong></div>
+        </div>
+    </li>
+    <div class="shop-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 order-2 order-lg-1 pt-5 pt-lg-0">
+                    <div class="sidebar-area">
+                        <div class="widgets-searchbox">
+                            <form id="widgets-searchbox" (ngSubmit)="getProductByName()" [formGroup]="searchFrom" method="get">
+                                <input class="input-field" type="text" formControlName="search" name="search"  placeholder="Search">
+                                <button class="widgets-searchbox-btn" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="widgets-area">
+                            <div class="widgets-item pt-0">
+                                <h2 class="widgets-title mb-4">Categories</h2>
+                                <ul class="widgets-category">
+                                    <li *ngFor="let cat of category">
+                                        <a (click)="getProductByCategoryId(cat.id)" style="cursor: pointer;">
+                                            <i class="fa fa-chevron-right"></i>
+                                            {{cat.name}}
+                                        </a>
+
+
+
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                           
+                            
+                           
+                        </div>
+
+                        <div class="widgets-area">
+                            <div class="widgets-item pt-0">
+                                <h2 class="widgets-title mb-4">Sort by price</h2>
+                                <ul class="widgets-category">
+                                    <li>
+                                        <a (click)="findByPriceBetween(100, 500)" style="cursor: pointer;">
+                                            <i class="fa fa-chevron-right"></i>
+                                            Từ 100 - 500
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a (click)="findByPriceBetween(500, 1000)" style="cursor: pointer;">
+                                            <i class="fa fa-chevron-right"></i>
+                                            Từ 500 - 1000
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a (click)="findByPriceBetween(1000, 5000)" style="cursor: pointer;">
+                                            <i class="fa fa-chevron-right"></i>
+                                            Từ 1000 - 5000
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a (click)="findByPriceBetween(5000, 100000)" style="cursor: pointer;">
+                                            <i class="fa fa-chevron-right"></i>
+                                            Từ 5000 - 10000
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a (click)="findByPriceBetween(10000, 50000)" style="cursor: pointer;">
+                                            <i class="fa fa-chevron-right"></i>
+                                            Từ 10000 - 50000
+                                        </a>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                           
+                            
+                           
+                        </div>
+                        <div class="banner-item widgets-banner img-hover-effect">
+                            <div class="banner-img">
+                                <img src="assets/site/images/sidebar/banner/1-270x300.jpg" alt="Banner Image">
+                            </div>
+                            <div class="banner-content text-position-center">
+                                <span class="collection">New Collection</span>
+                                <h3 class="title">Plant Port</h3>
+                                <div class="button-wrap">
+                                    <a class="btn btn-custom-size sm-size btn-pronia-primary" href="#">Shop
+                                        Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-8 order-1 order-lg-2">
+                    <div class="product-topbar">
+                        <ul>
+                            
+                            <li class="product-view-wrap">
+                                <ul class="nav" role="tablist">
+                                    <li class="grid-view" role="presentation">
+                                        <a id="grid-view-tab" data-bs-toggle="tab" href="#grid-view" role="tab" aria-selected="true">
+                                            <i class="fa fa-th"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-view" role="presentation">
+                                        <a class="active" id="list-view-tab" data-bs-toggle="tab" href="#list-view" role="tab" aria-selected="true">
+                                            <i class="fa fa-th-list"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="short">
+                                <select class="nice-select"  ng-model="orderByAttr">
+                                    <option value="1">Sort by Default</option>
+                                    <option value="2">Sort by Popularity</option>
+                                    <option value="3">Sort by Rated</option>
+                                    <option value="4">Sort by Latest</option>
+                                    <option value="5">Sort by High Price</option>
+                                    <option value="6">Sort by Low Price</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
+                            <div class="product-grid-view row g-y-20">
+                                <div class="col-md-4 col-sm-6" *ngFor="let pro of product">
+                                    <div class="product-item">
+                                        <div class="product-img">
+                                            <a [routerLink]="['/home/detail', pro.id]">
+                                                <img class="primary-img" [src]="this.host + pro.image" alt="Product Images">
+                                                <img class="secondary-img" [src]="this.host + pro.image"  alt="Product Images">
+                                            </a>
+                                            <div class="product-add-action">
+                                                <ul>
+                                                    <li>
+                                                        <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            <i class="pe-7s-like"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                        <a data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            <i class="pe-7s-look"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <a class="product-name" [routerLink]="['/home/detail', pro.id]">{{pro.name}}</a>
+                                            <div class="price-box pb-1" *ngIf="pro.sale_price > 0">
+                                                <span class="new-price" style="text-decoration: line-through;color: rgb(128, 128, 137);">${{pro.price}}</span>
+                                                <span class="new-price ml-2">${{pro.sale_price}}</span>
+                                            </div>
+
+                                            <div class="price-box pb-1" *ngIf="pro.sale_price == 0">
+                                                <span class="new-price" >${{pro.price}} </span>
+                                            </div>
+
+                                            
+                                           
+                                            <div class="rating-box">
+                                                <ul *ngIf="countStar == 5">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                </ul>
+            
+                                                <ul *ngIf="countStar == 4">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                </ul>
+            
+                                                <ul *ngIf="countStar == 3">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                </ul>
+            
+                                                <ul *ngIf="countStar == 2">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                </ul>
+            
+                                                <ul *ngIf="countStar == 1">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="list-view" role="tabpanel" aria-labelledby="list-view-tab">
+                            <div class="product-list-view row g-y-30">
+                                <div class="col-12" *ngFor="let pro of product">
+                                    <div class="product-item">
+                                        <div class="product-img">
+                                            <a [routerLink]="['/home/detail', pro.id]">
+                                                <img class="primary-img" [src]="this.host + pro.image"  alt="Product Images">
+                                                <img class="secondary-img" [src]="this.host + pro.image"  alt="Product Images">
+                                            </a>
+                                        </div>
+                                        <div class="product-content">
+                                            <a class="product-name" [routerLink]="['/home/detail', pro.id]">{{pro.name}}</a>
+                                            <div class="price-box pb-1" *ngIf="pro.sale_price > 0">
+                                                <span class="new-price" style="text-decoration: line-through;color: rgb(128, 128, 137);">${{pro.price}}</span>
+                                                <span class="new-price ml-2">${{pro.sale_price}}</span>
+                                            </div>
+
+                                            <div class="price-box pb-1" *ngIf="pro.sale_price == 0">
+                                                <span class="new-price" >${{pro.price}} </span>
+                                            </div>
+
+                                            <div class="rating-box">
+                                                <ul *ngIf="countStar == 5">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                </ul>
+            
+                                                <ul *ngIf="countStar == 4">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                </ul>
+            
+                                                <ul *ngIf="countStar == 3">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                </ul>
+            
+                                                <ul *ngIf="countStar == 2">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                </ul>
+            
+                                                <ul *ngIf="countStar == 1">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                    <li><i class="fa fa-star" style="color: #cacac1;"></i></li>
+                                                </ul>
+                                            </div>
+                                            <p class="short-desc mb-0">Proin nec ligula dolor. Mauris mollis turpis
+                                                vitae viverra viverra. Mauris at lacus commodo, dictum eros in, interdum
+                                                diam. Sed lorem orci, maximus nec efficitur, mattis sed tortor.
+                                                Voluptates repudiandae nulla rhoncus varius eget id eros.
+                                            </p>
+                                            <div class="product-add-action">
+                                                <ul>
+                                                    <li>
+                                                        <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            <i class="pe-7s-like"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                        <a [routerLink]="['/home/detail', pro.id]" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            <i class="pe-7s-look"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a data-tippy="Add to cart" (click)="onAddCart(pro)" type="submit" a-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                          
+                          <li class="page-item {{y == pageNo ? 'active' : ''}}" *ngFor="let p of totalPage; let y = index">
+                            <a class="page-link" (click)="listNumber(y)">{{y+1}} <span class="sr-only">(current)</span></a>
+                          </li>
+                         
+                        </ul>
+                      </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

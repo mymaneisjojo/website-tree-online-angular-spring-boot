@@ -1,0 +1,86 @@
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Category</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 1%">
+                            ID
+                        </th>
+                        <th style="width: 20%">
+                            Category Name
+                        </th>
+                        <th style="width: 30%">
+                            Category Description
+                        </th>
+
+                        <th style="width: 8%" class="text-center">
+                            Status
+                        </th>
+                        <th style="width: 8%">
+                            <a class="btn btn-primary btn-sm" [routerLink]="['/category-add']">
+                                <i class="fas fa-folder">
+                                </i>
+                                Insert
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cat of category">
+                        <td>
+                            {{cat.id}}
+                        </td>
+                        <td>
+                            <a>
+                                {{cat.name}}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            <a>
+                                {{cat.description}}
+                            </a>
+
+                        </td>
+
+                        <td class="project-state">
+                            <span class="badge badge-success">{{cat.status == 1? 'Hiện' : 'Ẩn'}}</span>
+                        </td>
+
+
+                        <td class="project-actions text-right">
+                            
+                            <a class="btn btn-info btn-sm" href="" [routerLink]="['/admin/category-update', cat.id]">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Edit
+                            </a>
+                            <a class="btn btn-danger btn-sm" type="button" (click)="deleteCategory(cat.id)">
+                                <i class="fas fa-trash">
+                                </i>
+
+                                
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>

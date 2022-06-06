@@ -1,0 +1,227 @@
+<!-- <div class="wrapper">
+    <form (ngSubmit)="insertProduct()" [formGroup]="myForm" enctype="multipart/form-data" method="POST" role="form">
+        <legend style="color: blue;">Add Product</legend>
+    
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label for="inputName">Name</label>
+                            <input type="text" class="form-control" formControlName="name" name="name" placeholder="Input field">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="inputName">Quantity</label>
+                            <input type="text" class="form-control" name="quantity" formControlName="quantity"  placeholder="Input field">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputName">Price</label>
+                                    <input type="text" class="form-control" name="price" formControlName="price" placeholder="Input field">
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="inputName"></label>
+                            <select name="category" formControlName="cat"class="form-control">
+                                <option value="">-- Select Category --</option>
+                                <option *ngFor="let cate of category" [ngValue]="cate">{{cate.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="inputName"></label>
+                            <select name="brand" formControlName="bra" class="form-control">
+                                <option value="">-- Select Category --</option>
+                                <option *ngFor="let bras of brand" [ngValue]="bras">{{bras.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Description</label>
+                    <textarea type="text" formControlName="description" class="form-control" name="description" placeholder="Input field" > </textarea>
+                </div>
+    
+            </div>
+            <div class="col-md-4">
+                
+                
+                <div class="form-group">
+                    <label for="inputName">Image</label>
+                    <input type="file" class="form-control" formControlName="image" name="image" accept="image/*" (change)="onSelectFile($event)" placeholder="Input field">
+                    <img [src]="imgURL"  height="200px;">
+                </div>
+                <div class="form-group mt-5">
+                    <label for="inputStatus">Status: </label>
+                    <input name="status" type="radio" value="1">True
+                    <input name="status" type="radio" value="0">False
+                </div>
+                
+            </div>
+
+           
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    
+ </div> -->
+
+
+<form action="" method="post" (ngSubmit)="insertProduct()" [formGroup]="myForm" enctype="multipart/form-data">
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">General</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+
+
+                    <div class="form-group">
+                        <label for="inputName"> Name</label>
+
+                        <input type="text" formControlName="name" name="name" id="inputName" class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && form['name'].errors }">
+
+                        <div *ngIf="submitted && form['name'].errors" class="invalid-feedback">
+                                <div *ngIf="form['name'].errors['required']">name is required</div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEstimatedBudget">Quantity</label>
+                        <input type="number" class="form-control" formControlName="quantity" name="quantity" step="1"
+                            min="1" placeholder="" aria-describedby="helpId"  [ngClass]="{ 'is-invalid': submitted && form['quantity'].errors }">
+
+                        <div *ngIf="submitted && form['quantity'].errors" class="invalid-feedback">
+                            <div *ngIf="form['quantity'].errors['required']">Quantity is
+                                required.
+                            </div>
+                            <div *ngIf="form['quantity'].errors?.['min']">quantity should be
+                                more than 1.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEstimatedBudget">Price</label>
+                        <input type="number" class="form-control" formControlName="price" name="price" step="1000"
+                            min="1000" class="form-control" placeholder="" aria-describedby="helpId" [ngClass]="{ 'is-invalid': submitted && form['price'].errors }" >
+                        <div *ngIf="submitted && form['price'].errors" class="invalid-feedback">
+                            <div *ngIf="form['price'].errors['required']">price is
+                                required.
+                            </div>
+                            <div *ngIf="form['price'].errors?.['min']">price should be
+                                more than 1.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEstimatedBudget">Sale Price</label>
+                        <input type="number" class="form-control" formControlName="sale_price" name="sale_price"
+                            class="form-control" placeholder="" aria-describedby="helpId" [ngClass]="{ 'is-invalid': submitted && form['sale_price'].errors }">
+                            <div *ngIf="submitted && form['price'].errors" class="invalid-feedback">
+                                
+                                <div *ngIf="form['price'].errors?.['min']">sale price should be
+                                    more than 0.</div>
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputDescription"> Description</label>
+                        <textarea id="inputDescription" class="form-control" formControlName="description"
+                            name="description" class="form-control" rows="4"></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+
+                        <div class="custom-control custom-radio " >
+                            <input class="custom-control-input" type="radio" formControlName="status" name="status"  id="customRadio1" name="customRadio"
+                                value="1">
+                            <label for="customRadio1" class="custom-control-label">Ẩn</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" formControlName="status" name="status"   id="customRadio2" name="customRadio"
+                                value="0" checked="">
+                            <label for="customRadio2" class="custom-control-label">Hiện</label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">General</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label for="inputSpentBudget">Image</label>
+                        <input type="file" class="form-control" formControlName="image" name="image" accept="image/*"
+                            (change)="onSelectFile($event)" placeholder="Input field" [ngClass]="{ 'is-invalid': submitted && form['image'].errors }">
+                        <img [src]="imgURL" height="200px;">
+                        <div *ngIf="submitted && form['image'].errors" class="invalid-feedback">
+                            <div *ngIf="form['image'].errors['required']">image is required</div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="cat" formControlName="cat" class="form-control" [ngClass]="{ 'is-invalid': submitted && form['cat'].errors }"> 
+                            <option *ngFor="let cate of category" [ngValue]="cate">{{cate.name}}</option>
+
+                        </select>
+                        <div *ngIf="submitted && form['cat'].errors" class="invalid-feedback">
+                            <div *ngIf="form['cat'].errors['required']">cat is required</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row mb-4">
+        <div class="col-12">
+            <input type="submit" value="Create" class="btn btn-success float-right">
+        </div>
+    </div>
+
+</form>

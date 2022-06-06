@@ -1,0 +1,134 @@
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Projects</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 1%">
+                            ID
+                        </th>
+                        <th style="width: 15%">
+                             Name
+                        </th>
+                        <th style="width: 5%">
+                            Code
+                       </th>
+
+                        <th style="width: 5%">
+                             Quantity
+                        </th>
+                        <th style="width: 5%">
+                            Condition 
+                        </th>
+                        <th style="width: 5%">
+                            Number 
+                        </th>
+
+                        <th style="width: 5%">
+                            Start date 
+                        </th>
+                        <th style="width: 5%">
+                             End date
+                        </th>
+
+                      
+
+
+                       
+                        <th style="width: 15%">
+                            <a class="btn btn-primary btn-sm" [routerLink]="['/coupon-add']">
+                                <i class="fas fa-folder">
+                                </i>
+                                Insert
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let co of coupon">
+                        <td>
+                            {{co.id}}
+                        </td>
+                        <td>
+                            <a>
+                                {{co.name}}
+                            </a>
+                        </td>
+
+                        <td>
+                            <a>
+                                {{co.code}}
+                            </a>
+                        </td>
+
+                        <td>
+                            <a>
+                                {{co.quantity}}
+                            </a>
+                        </td>
+                       
+                        
+
+                        <td>
+                            <a>
+                                {{co.condition == 1? 'Giamr theo giá' : 'Giamr theo %'}}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            <a>
+                                {{co.number}}{{co.condition == 1 ? '$' : '%'}}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            <a>
+                                {{co.start_date | date}}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            <a>
+                                {{co.end_date | date}}
+                            </a>
+
+                        </td>
+
+
+                      
+
+                        <td class="project-actions text-right">
+                            
+                            <a class="btn btn-info btn-sm" [routerLink]="['/admin/coupon-update', co.id]">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Edit
+                            </a>
+                            <a class="btn btn-danger btn-sm" type="button" (click)="deleteCoupon(co.id)">
+                                <i class="fas fa-trash">
+                                </i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>

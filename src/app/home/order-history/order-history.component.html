@@ -1,0 +1,171 @@
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/images/breadcrumb/bg/1-1-1919x388.jpg" style="background-image: url(../assets/site/images/breadcrumb/bg/1-1-1919x388.jpg);">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading">Checkout Page</h2>
+                        <ul>
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>Checkout</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="checkout-area section-space-y-axis-100" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <form>
+                        <div class="checkbox-form">
+                            <h3>Thông tin người mua</h3>
+                            <div class="row" >
+                               
+                                <div class="col-md-12" >
+                                    <div class="checkout-form-list">
+                                        <label> Name <span class="required">*</span></label>
+                                        <input placeholder="" type="text" value="{{order.cus.name}}" readonly="readonly">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Email Address <span class="required">*</span></label>
+                                        <input placeholder="" type="email" value="{{order.cus.email}}" readonly="readonly">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Phone <span class="required">*</span></label>
+                                        <input type="text" value="{{order.cus.phone}}" readonly="readonly">
+                                    </div>
+                                </div>
+                                
+                              
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Address <span class="required">*</span></label>
+                                        <input type="text" value="{{order.cus.address}}" readonly="readonly">
+                                    </div>
+                                </div>
+                               
+                               
+                               
+                                
+                            </div>
+                           
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <form>
+                        <div class="checkbox-form">
+                            <h3>Thông tin người nhận</h3>
+                            <div class="row">
+                               
+                                <div class="col-md-12" >
+                                    <div class="checkout-form-list">
+                                        <label> Name <span class="required">*</span></label>
+                                        <input placeholder="" type="text" value="{{order.name}}" readonly="readonly">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Email Address <span class="required">*</span></label>
+                                        <input placeholder="" type="email" value="{{order.email}}" readonly="readonly">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Phone <span class="required">*</span></label>
+                                        <input type="text" value="{{order.phone}}" readonly="readonly">
+                                    </div>
+                                </div>
+                                
+                              
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Address <span class="required">*</span></label>
+                                        <input type="text" value="{{order.address}}" readonly="readonly">
+                                    </div>
+                                </div>
+                               
+                               
+                                
+                            </div>
+                           
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="your-order">
+                        <h3>Your order</h3>
+                        <div class="your-order-table table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="cart-product-name">Product</th>
+                                        <th class="cart-product-total">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cart_item" style="text-align: center;" *ngFor="let od of orderDetail">
+                                        <td class="cart-product-name">{{od.pro.name}}<strong class="product-quantity">
+                                        × {{od.quantity}}</strong></td>
+                                        <td class="cart-product-total"><span class="amount">{{od.price | currency: 'USD'}}</span></td>
+                                    </tr>
+                                  
+                                </tbody>
+
+                               
+                                <tfoot  style="text-align: center;" *ngIf="order.cou == null">
+                                    <tr class="cart-subtotal">
+                                        <th>Cart Subtotal</th>
+                                        <td><span class="amount">{{totalPriceValue | currency: 'USD'}}</span></td>
+                                    </tr>
+                                   
+                                    <tr class="cart-subtotal">
+                                        <th>Coupon</th>
+                                        <td><span class="amount">No</span></td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>Order Total</th>
+                                        <td><strong><span class="amount">{{totalPriceValue | currency: 'USD'}}</span></strong></td>
+                                    </tr>
+                                </tfoot>
+
+                                <tfoot  style="text-align: center;" *ngIf="order.cou != null">
+                                    <tr class="cart-subtotal">
+                                        <th>Cart Subtotal</th>
+                                        <td><span class="amount">{{totalPriceValue | currency: 'USD'}}</span></td>
+                                    </tr>
+                                   
+                                    <tr class="cart-subtotal">
+                                        <th>Coupon</th>
+                                        <td><span class="amount">-{{order.cou.number}} {{order.cou.condition == 1 ? '$' : '%'}}</span></td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>Order Total</th>
+                                        <td><strong><span class="amount">{{(order.cou.condition == 1 ? totalPriceValue - order.cou.number: totalPriceValue * ((100-coupon.number)/100)) | currency:'USD'}}</span></strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

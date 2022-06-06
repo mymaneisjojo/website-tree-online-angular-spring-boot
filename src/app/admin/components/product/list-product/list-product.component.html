@@ -1,0 +1,140 @@
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Projects</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 1%">
+                            ID
+                        </th>
+                        <th style="width: 15%">
+                             Name
+                        </th>
+                        <th style="width: 5%">
+                            Image
+                       </th>
+
+                        <th style="width: 5%">
+                             Quantity
+                        </th>
+                        <th style="width: 5%">
+                            Category 
+                        </th>
+                      
+                        <th style="width: 5%">
+                             Price
+                        </th>
+
+                        <th style="width: 5%">
+                            Sale Price
+                       </th>
+
+                        <th style="width: 20%" class="text-center">
+                            Status
+                        </th>
+                        <th style="width: 15%">
+                            <a class="btn btn-primary btn-sm" [routerLink]="['/product-add']">
+                                <i class="fas fa-folder">
+                                </i>
+                                Insert
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pro of product">
+                        <td>
+                            {{pro.id}}
+                        </td>
+                        <td>
+                            <a>
+                                {{pro.name}}
+                            </a>
+                        </td>
+
+                        <td>
+                            <a>
+                                <img [src]="this.host + pro.image" width="100px" height="100px" alt="">
+                            </a>
+                        </td>
+                       
+                        <td>
+                            <a>
+                                {{pro.quantity}}
+                            </a>
+                        </td>
+                        <td>
+                            <a>
+                                {{pro.cat.name}}
+                            </a>
+                        </td>
+                        
+
+                        <td>
+                            <a>
+                                {{pro.price}}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            <a>
+                                {{pro.sale_price}}
+                            </a>
+
+                        </td>
+
+                        <td class="project-state">
+                            <span class="badge badge-success">{{pro.status == 1? 'Ẩn' : 'Hiện'}}</span>
+                        </td>
+
+
+                        <td class="project-actions text-right">
+                            
+                            <a class="btn btn-primary btn-sm" [routerLink]="['/admin/product-detail', pro.id]">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Detail
+                            </a>
+                            <a class="btn btn-info btn-sm" [routerLink]="['/admin/product-update', pro.id]">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Edit
+                            </a>
+                            <a class="btn btn-danger btn-sm" type="button" [routerLink]="['/admin/product-delete', pro.id]">
+                                <i class="fas fa-trash">
+                                </i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <nav aria-label="...">
+            <ul class="pagination mt-5">
+              <li class="page-item disabled">
+              </li>
+              <li class="page-item {{y == pageNo ? 'active' : ''}}" *ngFor="let p of totalPage; let y = index">
+                <a class="page-link" (click)="listNumber(y)">{{y+1}} <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item">
+              </li>
+            </ul>
+          </nav>
+
+    </div>
+</section>

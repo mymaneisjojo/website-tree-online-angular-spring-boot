@@ -1,0 +1,160 @@
+<div class="card-body">
+    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h1>Thông tin tài khoản</h1>
+            </div>
+            <div class="col-sm-12 col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="example2" class="table table-bordered table-hover dataTable dtr-inline"
+                    aria-describedby="example2_info">
+                    <thead>
+                        <tr>
+                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                colspan="1" aria-sort="ascending"
+                                aria-label="Rendering engine: activate to sort column descending">ID Customer</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Browser: activate to sort column ascending">Customer name</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Platform(s): activate to sort column ascending">Customer phone</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Engine version: activate to sort column ascending">Customer email</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="CSS grade: activate to sort column ascending">Customer address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="even">
+                            <td class="sorting_1 dtr-control">{{order.cus.id}}</td>
+                            <td>{{order.cus.name}}</td>
+                            <td>{{order.cus.phone}}</td>
+                            <td>{{order.cus.email}}</td>
+                            <td>{{order.cus.address}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card-body">
+    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h1>Thông tin nguời nhận</h1>
+            </div>
+            <div class="col-sm-12 col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="example2" class="table table-bordered table-hover dataTable dtr-inline"
+                    aria-describedby="example2_info">
+                    <thead>
+                        <tr>
+                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                colspan="1" aria-sort="ascending"
+                                aria-label="Rendering engine: activate to sort column descending">Customer Name</th>
+                           
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Platform(s): activate to sort column ascending">Customer phone</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Engine version: activate to sort column ascending">Customer email</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="CSS grade: activate to sort column ascending">Customer address</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Browser: activate to sort column ascending">Customer note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="even">
+                            <td class="sorting_1 dtr-control">{{order.name}}</td>
+                            <td>{{order.phone}}</td>
+                            <td>{{order.email}}</td>
+                            <td>{{order.address}}</td>
+                            <td>{{order.note}}</td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="card-body">
+    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h1>Sản phẩm đã mua</h1>
+            </div>
+            <div class="col-sm-12 col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="example2" class="table table-bordered table-hover dataTable dtr-inline"
+                    aria-describedby="example2_info">
+                    <thead>
+                        <tr>
+                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                colspan="1" aria-sort="ascending"
+                                aria-label="Rendering engine: activate to sort column descending">Product name</th>
+
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Platform(s): activate to sort column ascending">Product quantity</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Engine version: activate to sort column ascending">Product price</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="CSS grade: activate to sort column ascending">Coupon</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Browser: activate to sort column ascending">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="even" *ngFor="let od of orderDetail">
+                            <td class="sorting_1 dtr-control">{{od.pro.name}}</td>
+                            <td>{{od.quantity}}</td>
+                            <td>{{od.price}}</td>
+                            <td>{{od.coupon}}</td>
+                            <td>{{od.quantity * od.price}}</td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div *ngIf="order.cou == null">
+    <h4>Subtotal: {{totalPriceValue}}</h4>
+    <h5>Coupon: 0$</h5>
+    <h3>Total: {{totalPriceValue}}</h3>
+</div>
+
+<div *ngIf="order.cou != null">
+    <h4>Subtotal: {{totalPriceValue}}</h4>
+    <h5>Coupon: {{order.cou.number}} {{order.cou.condition == 1 ? '$' : '%'}}</h5>
+    <h3>Total: {{order.cou.condition == 1 ? totalPriceValue - order.cou.number: totalPriceValue * ((100-order.cou.number)/100) | currency:'USD'}}</h3>
+
+</div>
+
+
+
+<div class="row mb-4">
+    <div class="col-12">
+        <input type="submit" value="Confirm" (click)="updateOrder()" class="btn btn-success float-right">
+    </div>
+</div>

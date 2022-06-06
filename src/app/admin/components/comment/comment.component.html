@@ -1,0 +1,139 @@
+
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Projects</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 1%">
+                            ID
+                        </th>
+                        <th style="width: 20%">
+                            Customer Name
+                        </th>
+                        <th style="width: 30%">
+                            Product Name
+                        </th>
+
+                        <th style="width: 5%">
+                            Comment
+                        </th>
+
+                        <th style="width: 5%">
+                            Star
+                        </th>
+
+                        <th style="width: 5%">
+                            Status
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ra of rate">
+                        <td>
+                            {{ra.id}}
+                        </td>
+                        <td>
+                            <a>
+                                {{ra.cus.name}}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            <a>
+                                {{ra.pro.name}}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            <a>
+                                {{ra.description}}
+                            </a>
+
+                        </td>
+
+                       <td>
+                        <a *ngIf="ra.star == 5">
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            
+                        </a>
+                        <a *ngIf="ra.star == 4">
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+
+                        </a>
+                        <a *ngIf="ra.star == 3">
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+
+                        </a>
+                        <a *ngIf="ra.star == 2">
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+
+                        </a>
+                        <a *ngIf="ra.star == 1">
+                            <i class="ri-star-fill" style="color: #ffe24d;"></i>
+                          
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+                            <i class="ri-star-fill" style="color: #cacac1;"></i>
+
+                        </a>
+                       
+                       </td>
+
+                       <td>
+                        <a>
+                            {{ra.status == 0 ? 'Ẩn' : 'Hiện'}}
+                        </a>
+
+                    </td>
+                     
+
+                        <td class="project-actions text-right">
+                            
+                           
+                            <a class="btn btn-danger btn-sm" type="button" (click)="deleteRate(ra.id)">
+                                <i class="fas fa-trash">
+                                </i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
